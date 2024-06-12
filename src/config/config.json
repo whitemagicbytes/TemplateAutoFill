@@ -1,0 +1,83 @@
+{
+  "defaultOption": "basic",
+  "inputFields": {
+    "company": {
+      "label": "Company",
+      "placeholder": "Enter company name",
+      "yamlKey": "company",
+      "validation": {
+        "required": true,
+        "pattern": "^[a-zA-Z0-9 ]+$",
+        "errorMessage": "Company name should only contain alphanumeric characters and spaces."
+      }
+    },
+    "domain": {
+      "label": "Domain",
+      "placeholder": "Enter domain",
+      "yamlKey": "domain",
+      "validation": {
+        "required": true,
+        "pattern": "^([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*\\.)+[a-zA-Z]{2,}$",
+        "errorMessage": "Please enter a valid domain."
+      }
+    },
+    "aws_account": {
+      "label": "AWS Account",
+      "type": "select",
+      "options": ["gen2", "gen3"],
+      "defaultValue": "gen2",
+      "yamlKey": "aws_account",
+      "conditionalMappings": [
+        {
+          "conditions": [
+            { "field": "aws_account", "value": "gen2" },
+            { "field": "env", "value": "qa" }
+          ],
+          "actions": {
+            "setFields": {
+              "account": "shared-qagen2",
+              "zone_name": "qa_zone"
+            }
+          }
+        },
+        {
+          "conditions": [
+            { "field": "aws_account", "value": "gen3" },
+            { "field": "env", "value": "perf" }
+          ],
+          "actions": {
+            "setFields": {
+              "account": "shared-perfgen3",
+              "zone_name": "perf_zone_gen3"
+            }
+          }
+        }
+      ]
+    },
+    "env": {
+      "label": "Environment",
+      "type": "select",
+      "options": ["qa", "perf", "prod"],
+      "defaultValue": "qa",
+      "yamlKey": "env"
+    }
+  },
+  "formConfigurations": {
+    "basic": {
+      "heading": "Basic Info",
+      "fields": ["company", "domain", "aws_account", "env"],
+      "templates": {
+        "template1": "template1.txt",
+        "template2": "template2.txt"
+      }
+    },
+    "tutorial": {
+      "heading": "Tutorial Info",
+      "fields": ["company", "aws_account", "env"],
+      "templates": {
+        "template2": "template2.txt",
+        "template1": "template2.txt"
+      }
+    }
+  }
+}

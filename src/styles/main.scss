@@ -1,0 +1,156 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+h1, h2 {
+  color: #000000;
+  text-align: center;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.page-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #357ABD;
+  }
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+
+  input {
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+  }
+}
+
+.template-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  button {
+    float: right;
+    background-color: #4CAF50;
+
+    &:hover {
+      background-color: #388E3C;
+    }
+  }
+
+  pre {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    color: #fff !important;
+  }
+}
+
+.readme-container {
+  text-align: center;
+  margin-top: 20px;
+
+  ul {
+    text-align: left;
+    display: inline-block;
+  }
+}
+
+.template-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: #357ABD;
+    }
+  }
+}
