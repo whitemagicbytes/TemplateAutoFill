@@ -24,31 +24,31 @@
     "aws_account": {
       "label": "AWS Account",
       "type": "select",
-      "options": ["gen2", "gen3"],
-      "defaultValue": "gen2",
+      "options": ["clone3", "clone2"],
+      "defaultValue": "clone2",
       "yamlKey": "aws_account",
       "conditionalMappings": [
         {
           "conditions": [
-            { "field": "aws_account", "value": "gen2" },
+            { "field": "aws_account", "value": "clone2" },
             { "field": "env", "value": "qa" }
           ],
           "actions": {
             "setFields": {
-              "account": "shared-qagen2",
+              "account": "shared-qaclone2",
               "zone_name": "qa_zone"
             }
           }
         },
         {
           "conditions": [
-            { "field": "aws_account", "value": "gen3" },
+            { "field": "aws_account", "value": "clone3" },
             { "field": "env", "value": "perf" }
           ],
           "actions": {
             "setFields": {
-              "account": "shared-perfgen3",
-              "zone_name": "perf_zone_gen3"
+              "account": "shared-perfclone3",
+              "zone_name": "perf_zone_clone3"
             }
           }
         }
