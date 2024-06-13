@@ -39,8 +39,60 @@ Ensure you have the following installed on your machine:
 
 ### Installation
 
-Clone the repository:
-```sh
-git clone https://github.com/your-username/template-autofill.git
-cd template-autofill
+
+
+
+Install the dependencies:
+
+sh
+Copy code
+npm install
+or
+
+sh
+Copy code
+yarn install
+Usage
+Start the development server:
+
+sh
+Copy code
+npm start
+or
+
+sh
+Copy code
+yarn start
+The application will be available at http://localhost:3000.
+
+Testing
+To run the tests for this project, use the following command:
+
+sh
+Copy code
+npm test
+or
+
+sh
+Copy code
+yarn test
+The test suite includes unit tests for the core functionality, including form handling, template rendering, and conditional logic.
+
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature-name).
+Commit your changes (git commit -m 'Add some feature').
+Push to the branch (git push origin feature/your-feature-name).
+Create a pull request.
+Please ensure your code follows the project's coding standards and includes tests where applicable.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+Acknowledgements
+React
+jsPDF
+React Router
 
