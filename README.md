@@ -45,23 +45,19 @@ Ensure you have the following installed on your machine:
 Install the dependencies:
 
 sh
-Copy code
 npm install
 or
 
 sh
-Copy code
 yarn install
 Usage
 Start the development server:
 
 sh
-Copy code
 npm start
 or
 
 sh
-Copy code
 yarn start
 The application will be available at http://localhost:3000.
 
@@ -69,12 +65,10 @@ Testing
 To run the tests for this project, use the following command:
 
 sh
-Copy code
 npm test
 or
 
 sh
-Copy code
 yarn test
 The test suite includes unit tests for the core functionality, including form handling, template rendering, and conditional logic.
 
