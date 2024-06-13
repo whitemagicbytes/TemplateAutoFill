@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import config from '../config/config.json';
 import { renderTemplate } from '../utils/templateRenderer';
@@ -12,6 +12,7 @@ import FormConfigurationsSelection from './FormConfigurationsSelection';
 import InputTextFields from './InputTextFields';
 import SelectFields from './SelectFields';
 import TemplateButtons from './TemplateButtons';
+import { Container, Button, Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import '../styles/main.scss';
 
 const FormPage = () => {
@@ -26,26 +27,24 @@ const FormPage = () => {
     if (location.state) {
       const { formData, optionsData, optionType } = location.state;
       const initializedOptions = initializeDefaultOptions(optionsData, config);
-      setFormData(formData);
       setSelectedOptions(initializedOptions);
       setCurrentOption(optionType || config.defaultOption);
       log('Form data initialized from location state', { formData, optionsData, optionType });
-      setFormData(updateConditionalFields(initializedOptions, formData, config));
+      setFormData(formData);
     } else {
       const initializedOptions = initializeDefaultOptions({}, config);
       setSelectedOptions(initializedOptions);
       log('Form data initialized with default options', {});
-      setFormData(updateConditionalFields(initializedOptions, {}, config));
+      setFormData({});
     }
   }, [location.state]);
 
   const handleOptionChange = (e) => {
     setCurrentOption(e.target.value);
-    setFormData({});
     const initializedOptions = initializeDefaultOptions({}, config);
     setSelectedOptions(initializedOptions);
     log('Option changed', { selectedOption: e.target.value });
-    setFormData(updateConditionalFields(initializedOptions, {}, config));
+    setFormData({});
   };
 
   const handleChange = (e) => {
@@ -74,8 +73,6 @@ const FormPage = () => {
       log('Select option changed', { [name]: value });
       return newSelectedOptions;
     });
-
-    setFormData(updateConditionalFields({ ...selectedOptions, [name]: value }, formData, config));
   };
 
   const handleSubmit = (e) => {
@@ -118,23 +115,27 @@ const FormPage = () => {
   };
 
   return (
-    <div className="page-container">
+    <Container className="page-container">
+      <Typography variant="h4">Form Page</Typography>
       <form onSubmit={handleSubmit}>
-        <FormConfigurationsSelection
-          currentOption={currentOption}
-          handleOptionChange={handleOptionChange}
-          formConfigurations={config.formConfigurations}
-        />
-        <SelectFields
-          selectedOptions={selectedOptions}
-          handleSelectChange={handleSelectChange}
-          fields={config.formConfigurations[currentOption].fields}
-          inputFields={config.inputFields}
-        />
+        <FormControl fullWidth>
+          <InputLabel>Select Configuration</InputLabel>
+          <Select value={currentOption} onChange={handleOptionChange}>
+            {Object.keys(config.formConfigurations).map(option => (
+              <MenuItem key={option} value={option}>{config.formConfigurations[option].heading}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <InputTextFields
           formData={formData}
           handleChange={handleChange}
           errors={errors}
+          fields={config.formConfigurations[currentOption].fields}
+          inputFields={config.inputFields}
+        />
+        <SelectFields
+          selectedOptions={selectedOptions}
+          handleSelectChange={handleSelectChange}
           fields={config.formConfigurations[currentOption].fields}
           inputFields={config.inputFields}
         />
@@ -145,7 +146,7 @@ const FormPage = () => {
           formConfigurations={config.formConfigurations}
         />
       </form>
-    </div>
+    </Container>
   );
 };
 
